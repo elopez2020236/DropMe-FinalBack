@@ -187,6 +187,19 @@ function RegistrarAd() {
       
     }
 
+    function ObternerLog(req,res){
+      user= req.user.sub;
+      Usuario.findById(user,(err,userFinded)=>{
+        if(err){
+          return res.status(500).send({mensaje:'error en la peticion 1'});
+        }else if(userFinded){
+          return res.status(200).send({mensaje:'el usuario ',userFinded})
+        }else{
+          return res.status(500).send({mensaje:'error al obtener el usuario'})
+        }
+      })
+    }
+
 
   module.exports ={
     RegistrarAd,
@@ -194,6 +207,7 @@ function RegistrarAd() {
     Login,
     EditarUsuario,
     eliminarUsuario,
+    ObternerLog
   }
 
 
