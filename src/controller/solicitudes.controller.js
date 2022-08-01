@@ -95,7 +95,7 @@ function aceptarSolicitud(req,res){
 
                                 let tratoPModel = new tratoP();
                                 tratoPModel.Usuario1 = userSoli;
-                                tratoPModel.Producto1.Nombre = productoSoli;
+                                tratoPModel.Producto1 = productoSoli;
                                 tratoPModel.Usuario2=userOfer;
                                 tratoPModel.Producto2=productoOfer;
                                 tratoPModel.save((err,tratpSaved)=>{
