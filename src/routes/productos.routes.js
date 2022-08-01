@@ -10,5 +10,6 @@ api.delete("/eliminarProducto/:idProductos",md_autenticacion.Auth,controladorPro
 api.get("/obtenerProductos",controladorProductos.ObtenerProductosMain);
 api.get("/obtenerProductosLog", md_autenticacion.Auth, controladorProductos.ObtenerLog);
 api.get('/obterxId/:idProducto',controladorProductos.obtenerxId);
+api.put('/agregarFotos/:idProducto',controladorProductos.agregarImagenes);
 
 module.exports = api;

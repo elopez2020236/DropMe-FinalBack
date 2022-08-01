@@ -184,6 +184,20 @@ function obtenerxId(req,res){
         }
     })
 }
+function agregarImagenes(req,res){
+    var  parametros = req.body;
+    var idProducto = req.params.idProducto;
+
+    Producto.findByIdAndUpdate(idProducto,{fotos:parametros.fotos},{new: true},(err,productoSaved)=>{
+        if(err){
+            return res.status(500).send({mensaje:'error en la peticion'});
+        }else if(productoSaved){
+            return res.status(200).send({mensaje:'se agrego la imagen con exito',productoSaved})
+        }else{
+            return res.status(500).send({mensaje:'error al almacenar la imagen'})
+        }
+    })
+}
 
 module.exports ={
     AddProducto,
@@ -191,5 +205,7 @@ module.exports ={
     eliminarProudcto,
     ObtenerProductosMain,
     ObtenerLog,
-    obtenerxId
+    obtenerxId,
+    agregarImagenes
+    
   }
