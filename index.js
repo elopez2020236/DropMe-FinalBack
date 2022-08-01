@@ -11,7 +11,7 @@ const {RegistrarAd} = require('./src/controller/usuario.controller');
 const {CategoriaDefault} = require('./src/controller/categoria.controller');
 
   mongoose.Promise = global.Promise;                                                               
-mongoose.connect('mongodb://localhost:27017/DROPME', { useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=>{
     console.log("Se encuentra conectado a la base de datos.");
 
     app.listen(3000, function () {
