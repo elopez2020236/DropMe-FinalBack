@@ -22,7 +22,7 @@ function AddProducto(req,res){
                     modelProductos.nombre= parametros.nombre;
                     modelProductos.precio = parametros.precio;
                     modelProductos.categoria = categoria;
-                    modelProductos.fotos = [];
+                    modelProductos.fotos = 'aa';
                     modelProductos.factura = [];
                     modelProductos.usuario=user
                     modelProductos.save((err,productoSaved)=>{
