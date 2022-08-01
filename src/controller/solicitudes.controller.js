@@ -95,7 +95,7 @@ function aceptarSolicitud(req,res){
 
                                 let tratoPModel = new tratoP();
                                 tratoPModel.Usuario1 = userSoli;
-                                tratoPModel.Producto1=productoSoli;
+                                tratoPModel.Producto1.Nombre = productoSoli;
                                 tratoPModel.Usuario2=userOfer;
                                 tratoPModel.Producto2=productoOfer;
                                 tratoPModel.save((err,tratpSaved)=>{
@@ -208,6 +208,19 @@ function ObternerSolicitudes(req,res){
 
 }
 
+function obtenerSolisxid(req,res){
+    idsoli= req.params.idSolicitud;
+    Solicutudes.findById(idsoli,(err,solicitued)=>{
+        if(err){
+            return res.status(500).send({mensaje:'error en la peticion'});
+        }else if(solicitued){
+            return res.status(200).send({mensaje:'solicutes',solicitued});
+        }else{
+            return res.status(500).send({mensaje:'errro al obtener la solicitud'});
+        }
+    })
+}
+
 function obtenerSolitudesLog(req,res){
     userid= req.user.sub;
     Usuario.findById(userid,(err,userfinded)=>{
@@ -229,7 +242,7 @@ module.exports = {
     confirmarTrato,
     obtenerSolitudesLog,
     CancelarSoli,
-    ObternerSolicitudes
+    ObternerSolicitudes,obtenerSolisxid
 
 
 }
